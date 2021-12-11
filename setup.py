@@ -17,13 +17,17 @@ setup(
     author_email="yusuftaha9@gmail.com",
     license="MIT",
     classifiers=[
-        "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.7",
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
     ],
     # REQUIRED, the packages you are going to export
     packages=["donerkebab"],
     include_package_data=True,
     # Required libraries
-    install_requires=["feedparser", "html2text"],
+    install_requires=["selenium"],
 )
