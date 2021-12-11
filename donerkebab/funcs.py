@@ -11,7 +11,7 @@ from logger import *
 from halo import Halo
 
 class Spinner(Halo):
-    def __init__(self, text):
+    def __init__(self, text=''):
         super().__init__(text=text ,enabled=True)
     def __exit__(self, type, value, traceback):
         """Stops the spinner. For use in context managers."""
@@ -94,7 +94,7 @@ class Driver:
         def wrapper(driver):
             time_left = round(timeout - (time.time() - start_time), 2)
             spinner.text = f"{text}, timeout in {time_left}s"
-            return condition()
+            return condition(driver)
             # return expected_conditions.alert_is_present()
 
         return wait.until(wrapper, 'Waiting for alert timed out!')
@@ -103,7 +103,7 @@ class Driver:
     def wait_for_alert(self, timeout) -> str:
         """Waits until an alert is present, returs text inside the alert"""
         with Spinner() as spinner:
-            alert = self._timeout_wrapper(timeout, "Waiting for alert", spinner, expected_conditions.alert_is_present())
+            alert = self._timeout_wrapper("Waiting for alert", timeout, spinner, expected_conditions.alert_is_present())
 
             return alert
        
@@ -155,7 +155,6 @@ def NewFirefoxDriver(headless:bool=False,
 
 driver = NewFirefoxDriver(headless=False, height=20, width=20, x_pos=1000, y_pos=10)
 
-driver.wait_for_alert(10)
 
 # driver.forward()
 
