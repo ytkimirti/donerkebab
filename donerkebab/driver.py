@@ -6,8 +6,8 @@ from selenium.webdriver.remote.webelement import WebElement
 from selenium.common.exceptions import InvalidArgumentException, TimeoutException
 
 import time
-from logger import *
-from keys import Keys
+from .keys import Keys
+from ._spinner import Spinner
 
 class Driver:
     """Base wrapper class for selenium WebDriver"""
@@ -15,6 +15,14 @@ class Driver:
     d = None
     timeout = 20
 
+    def __init__(self, driver, log):
+        self.d = driver
+        self.log = log
+
+    def sleep(self, duration):
+        with Spinner(self.log, f'Sleeping for {duration}s', spinner='clock'):
+            time.sleep(duration)
+    
     @property
     def action(self):
         """Returns a `webdriver.ActionChains(driver)` for you to chain up functions
@@ -42,7 +50,7 @@ class Driver:
         driver.execute("return 'Hello World'") # Hello World
         ```
         """
-        with Spinner('Executing javascript'):
+        with Spinner(self.log, 'Executing javascript'):
             return self.d.execute_script(javascipt_code, *arguments)
 
     def scroll_to_element(self, element):
@@ -84,25 +92,19 @@ class Driver:
 
     def back(self):
         """Pressing the browser's back button:"""
-        log('Pressed browser back button')
         self.d.back()
 
     def forward(self):
         """Pressing the browser's forward button:"""
-        log('Pressed browser forward button')
         self.d.forward()
 
     def refresh(self):
         """Pressing the browser's refresh button:"""
-        log('Pressed browser refresh button')
         self.d.refresh()
 
-    def __init__(self, driver):
-        self.d = driver
-    
     def open(self, url:str):
         """Opens a url, url must start with 'https://' or 'http://'"""
-        with Spinner(f"Opening {url}") as spinner:
+        with Spinner(self.log, f"Opening {url}") as spinner:
             if not url.startswith('https://') and not url.startswith('http://'):
                 raise ValueError("Url must start with https:// or http://")
 
@@ -110,7 +112,7 @@ class Driver:
 
     def quit(self):
         """Closes the browser"""
-        with Spinner("Quitting"):
+        with Spinner(self.log, "Quitting"):
             self.d.quit()
 
     def _timeout_wrapper(self, text, error_msg, timeout , condition):
@@ -119,7 +121,7 @@ class Driver:
 
         start_time = time.time()
 
-        spinner = Spinner(text, autofail=False)
+        spinner = Spinner(self.log, text, autofail=False)
         spinner.start()
 
         def wrapper(driver):

@@ -1,3 +1,4 @@
+
 class bc:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
@@ -8,9 +9,3 @@ class bc:
     e = '\033[0m'#END thing
     b = '\033[1m'#bold
     u = '\033[4m'#underline
-
-def log(*args, **kwargs):
-    
-    print(bc.y + ' '.join(args) + bc.e, **kwargs)
-
-

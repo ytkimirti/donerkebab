@@ -1,6 +1,12 @@
+from donerkebab import Keys
+import time
 
 
-driver = NewChromeDriver(headless=True)
+# with Spinner("asdf"):
+#     time.sleep()
+
+print(Keys.F1)
+# driver = NewFirefoxDriver(headless=True)
 
 def test_execute():
     driver.execute("console.log('Hello World!!')", 'arg1')
@@ -112,7 +118,7 @@ def test_form():
 
     time.sleep(10)
     
-try:
-    test_google()
-finally:
-    driver.quit()
+# try:
+#     test_google()
+# finally:
+#     driver.quit()
