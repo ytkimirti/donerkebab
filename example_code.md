@@ -1,13 +1,16 @@
 # Goals
 
 [ ] - wrapping driver object with your driver
-[ ] - having a reference to the original driver
+[x] - having a reference to the original driver
 [ ] - setting the config directly of via functions for the driver
 [ ] - open, get_first, get_all, is_available, get_all_max_count
 [ ] - Element methods
 [ ] - logging every function
 [ ] - error on every possible situation
 
+[ ] - Proxy support
+[ ] - Cookies support
+[ ] - 
 [ ] - 
 
 [ ] - downloading drivers automatically
