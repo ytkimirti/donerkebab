@@ -114,6 +114,12 @@ driver.get_alert()
 
 ### Driver methods
 
-#### open(url)
+```py
 
-Opens the url and waits until the page loads. Url must start with https:// or http://
+driver.open(url) # Opens the url, waits for the page to load
+driver.forward()
+driver.back()
+driver.refresh()
+driver.set_window_size(width, height)
+driver.set_window_position(xpos, ypos)
+```
