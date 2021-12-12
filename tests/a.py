@@ -1,3 +1,9 @@
+import sys
+
+print(sys.path)
+
+sys.path.insert(0, '/Users/ytkimirti/Projects/python/donerkebab')
+
 from donerkebab import Keys, NewFirefoxDriver, NewChromeDriver
 
 driver = NewChromeDriver(log=True, headless=False)
