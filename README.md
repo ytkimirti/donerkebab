@@ -2,7 +2,7 @@
 
 > Control browsers without the pain with python.
 
-> A super easy to use, beginner friendly [selenium](https://pypi.org/project/selenium/) wrapper
+> A super easy to use and tasty [selenium](https://pypi.org/project/selenium/) wrapper
 
 ```shell
 $ pip install donerkebab
@@ -16,8 +16,10 @@ $ pip install donerkebab
 [Firefox](https://github.com/mozilla/geckodriver/releases)
 [Safari](https://webkit.org/blog/6900/webdriver-support-in-safari-10/)
 
-### 2. Place it in a PATH directory
-This might be /usr/bin or the directory as your python script
+### 2. Place it in the PATH directory
+You can place it in places like /usr/bin that's in your path
+
+Or just put it in the same directory as your script
 
 ## Example
 
@@ -121,11 +123,12 @@ driver.get_alert()
 ### Filling forms
 
 ```py
+from donerkebab import Keys
 
-
+# Get elements as usual
 inp = driver.get_element('input')
 
-inp.send_keys()
+inp.send_keys('President of US?' + Keys.ENTER)
 ```
 
 ### Driver methods
