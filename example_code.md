@@ -1,12 +1,10 @@
 # Goals
 
-[ ] - wrapping driver object with your driver
+[x] - wrapping driver object with your driver
 [x] - having a reference to the original driver
-[ ] - setting the config directly of via functions for the driver
-[ ] - open, get_first, get_all, is_available, get_all_max_count
-[ ] - Element methods
-[ ] - logging every function
-[ ] - error on every possible situation
+[x] - setting the config directly of via functions for the driver
+[x] - logging every function
+[meh] - error on every possible situation
 
 [ ] - Proxy support
 [ ] - Cookies support
@@ -14,11 +12,8 @@
 [ ] - 
 
 [ ] - downloading drivers automatically
-[ ] - tqdm for downloading stuff
-[ ] - maybe tqdm for waiting for elements
-[ ] - if they dont load give TimeoutException
-
-[ ] - 
+[ ] - tqdm for downloading drivers?
+[x] - maybe halo for waiting for elements
 
 # This is what I want the library to look like
 
