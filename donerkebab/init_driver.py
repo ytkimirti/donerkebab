@@ -14,68 +14,37 @@ def check_page_load_strategy(page_load_strategy):
         raise ValueError("page_load_strategy can only be 'normal', 'eager' or 'none'\n"
                         "for reference: https://www.selenium.dev/documentation/webdriver/capabilities/shared/#pageloadstrategy")
 
-def NewSafariDriver(log=True, headless=False, page_load_strategy='normal'):
+def InitDriver(OptionsFunc, InitFunc, log=True, executable_path=None,headless=False, page_load_strategy='normal'):
+    # print(f"driver in {executable_path}")
     check_page_load_strategy(page_load_strategy)
     
-    options = SafariOptions()
+    options = OptionsFunc()
 
     options.page_load_strategy = page_load_strategy
     options.headless = headless
 
-    with Spinner(log ,"Initing browser"):
-        d = webdriver.Safari(options=options)
+    with Spinner(log , "Opening browser"):
+        args = {'options':options}
+        if (executable_path):
+            args['executable_path'] = executable_path
+
+        d = InitFunc(**args)
+
         driver = Driver(d, log)
 
     return driver
-def NewOperaDriver(log=True, headless=False, page_load_strategy='normal'):
-    check_page_load_strategy(page_load_strategy)
     
-    options = OperaOptions()
+def EdgeDriver(log=True, executable_path=None,headless=False, page_load_strategy='normal'):
+    return InitDriver(EdgeOptions, webdriver.Edge, log, executable_path, headless, page_load_strategy)
 
-    options.page_load_strategy = page_load_strategy
-    options.headless = headless
+def OperaDriver(log=True, executable_path=None,headless=False, page_load_strategy='normal'):
+    return InitDriver(OperaOptions, webdriver.Opera, log, executable_path, headless, page_load_strategy)
 
-    with Spinner(log ,"Initing browser"):
-        d = webdriver.Opera(options=options)
-        driver = Driver(d, log)
+def SafariDriver(log=True, executable_path=None,headless=False, page_load_strategy='normal'):
+    return InitDriver(SafariOptions, webdriver.Safari, log, executable_path, headless, page_load_strategy)
 
-    return driver
-def NewEdgeDriver(log=True, headless=False, page_load_strategy='normal'):
-    check_page_load_strategy(page_load_strategy)
-    
-    options = EdgeOptions()
+def FirefoxDriver(log=True, executable_path=None,headless=False, page_load_strategy='normal'):
+    return InitDriver(FirefoxOptions, webdriver.Firefox, log, executable_path, headless, page_load_strategy)
 
-    options.page_load_strategy = page_load_strategy
-    options.headless = headless
-
-    with Spinner(log ,"Initing browser"):
-        d = webdriver.Edge(options=options)
-        driver = Driver(d, log)
-
-    return driver
-def NewFirefoxDriver(log=True, headless=False, page_load_strategy='normal'):
-    check_page_load_strategy(page_load_strategy)
-    
-    options = FirefoxOptions()
-
-    options.page_load_strategy = page_load_strategy
-    options.headless = headless
-
-    with Spinner(log ,"Initing browser"):
-        d = webdriver.Firefox(options=options)
-        driver = Driver(d, log)
-
-    return driver
-def NewChromeDriver(log=True, headless=False, page_load_strategy='normal'):
-    check_page_load_strategy(page_load_strategy)
-    
-    options = ChromeOptions()
-
-    options.page_load_strategy = page_load_strategy
-    options.headless = headless
-
-    with Spinner(log ,"Initing browser"):
-        d = webdriver.Chrome(options=options)
-        driver = Driver(d, log)
-
-    return driver
+def ChromeDriver(log=True, executable_path=None,headless=False, page_load_strategy='normal'):
+    return InitDriver(ChromeOptions, webdriver.Chrome, log, executable_path, headless, page_load_strategy)
