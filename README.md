@@ -4,6 +4,8 @@
 
 > A super easy to use and tasty [selenium](https://pypi.org/project/selenium/) wrapper
 
+![](https://img.shields.io/pypi/pyversions/donerkebab)
+![](https://img.shields.io/pypi/v/donerkebab)
 ```shell
 $ pip install donerkebab
 ```
