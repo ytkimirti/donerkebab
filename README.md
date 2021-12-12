@@ -47,3 +47,44 @@ for result in results:
 
 driver.quit()
 ```
+
+## Locating elements
+
+### Css selectors
+
+donerkebab always uses css selectors for locating elements. Some examples:
+
+`input` element with type input
+`div > input` element that is the direct child of input
+`input.search` element with a class of 'search'
+`input#main_button` element with an id of 'main_button'
+`a[href='https://google.com']` link element with a href attribute
+
+Definately check out more [advanced css selectors](https://saucelabs.com/resources/articles/selenium-tips-css-selectors). They come in really handy
+
+### Locator methods
+``
+
+## API
+
+### Driver init options
+
+```py
+driver = FirefoxDriver(log=True, executable_path=None,headless=False, page_load_strategy='normal'):
+```
+```
+log -> Enable or disable logging
+executable_path -> The full path to executable driver. If left null the it will look at the PATH variable to find the driver.
+page_load_strategy -> Take a look at the [official docs](https://www.selenium.dev/documentation/webdriver/capabilities/shared/#pageloadstrategy)
+```
+
+### Driver methods
+
+#### open(url)
+
+Opens the url and waits until the page loads. Url must start with https:// or http://
+
+
+
+
+
