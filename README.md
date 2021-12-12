@@ -118,6 +118,16 @@ driver.scroll_to_element(element)
 driver.get_alert()
 ```
 
+### Filling forms
+
+```py
+
+
+inp = driver.get_element('input')
+
+inp.send_keys()
+```
+
 ### Driver methods
 
 ```py
@@ -137,9 +147,15 @@ driver.set_window_position(xpos, ypos)
 #### Actions
 You can use actions for hovering over buttons or sending out special keys
 
-Look at the [official documentations](https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/interactions/Actions.html) for more detail
+Look at the [official documentations](https://www.selenium.dev/documentation/webdriver/actions_api/) for more detail
 
 ```py
+# Import special keys
+from donerkebab import Keys
+
+# Perform action ctrl + A (modifier CONTROL + Alphabet A) to select the page
+driver.action.key_down(Keys.CONTROL).send_keys("a").perform()
+
 menu = driver.get_element('a[href="/downloads/"]')
 
 driver.action.move_to_element(menu).perform()
@@ -147,4 +163,19 @@ driver.action.move_to_element(menu).perform()
 submenu = driver.get_element('a[href="/downloads/source/"]')
 
 driver.action.move_to_element(submenu).click().perform()
+```
+
+#### Execute javascript in browser
+If you feel stuck, you can also execute javascript to click buttons, submit forms etc.
+
+```py
+driver.execute(javascript_code, argument1, argument2, argument3...)
+
+driver.execute("console.log('Hello World!')") # This logs Hello World! to the browser's console
+
+# You can access the arguments with the 'argument' variable
+driver.execute("console.log(argument[0] + argument[1])", "Hello ", "World")
+
+# Or get the return value as string
+print(driver.execute('2 + 3')) # 5???
 ```
