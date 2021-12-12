@@ -17,6 +17,7 @@ $ pip install donerkebab
 ### 2. Place it in a PATH directory
 This might be /usr/bin or the directory as your python script
 
+![Running in the temrinal](https://github.com/ytkimirti/donerkebab/blob/main/img/run.gif?raw=true)
 ```py
 # Also available for Firefox, Edge, Safari and Opera
 from donerkebab import ChromeDriver
