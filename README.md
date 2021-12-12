@@ -129,6 +129,18 @@ from donerkebab import Keys
 inp = driver.get_element('input')
 
 inp.send_keys('President of US?' + Keys.ENTER)
+
+# Dropdown select elements
+
+# Select an <option> based upon the <select> element's internal index
+driver.set_select(element).select_by_index(1)
+
+# Select an <option> based upon its value attribute ex: <option value='value1'>Moderate</option>
+driver.set_select(element).select_by_value('value1')
+
+# Select an <option> based upon its text <option>Bread</option>
+driver.set_select(element).select_by_visible_text('Bread')
+
 ```
 
 ### Driver methods
