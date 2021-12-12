@@ -1,6 +1,8 @@
 <h1 align='center'>🥙 donerkebab 🥙</h1>
-> A super easy to use, beginner friendly [selenium](https://pypi.org/project/selenium/) wrapper
 
+> Control browsers without the pain with python.
+
+> A super easy to use, beginner friendly [selenium](https://pypi.org/project/selenium/) wrapper
 
 ```shell
 $ pip install donerkebab
@@ -16,6 +18,10 @@ $ pip install donerkebab
 
 ### 2. Place it in a PATH directory
 This might be /usr/bin or the directory as your python script
+
+## Example
+
+The following script to prints the search results of a duckduckgo search
 
 ![Running in the temrinal](https://github.com/ytkimirti/donerkebab/blob/main/img/run.gif?raw=true)
 ```py
@@ -117,9 +123,28 @@ driver.get_alert()
 ```py
 
 driver.open(url) # Opens the url, waits for the page to load
+
+# Browser back forward refresh buttons
 driver.forward()
 driver.back()
 driver.refresh()
+
+# All measures in pixels
 driver.set_window_size(width, height)
 driver.set_window_position(xpos, ypos)
+```
+
+#### Actions
+You can use actions for hovering over buttons or sending out special keys
+
+Look at the [official documentations](https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/interactions/Actions.html) for more detail
+
+```py
+menu = driver.get_element('a[href="/downloads/"]')
+
+driver.action.move_to_element(menu).perform()
+
+submenu = driver.get_element('a[href="/downloads/source/"]')
+
+driver.action.move_to_element(submenu).click().perform()
 ```
