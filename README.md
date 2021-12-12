@@ -54,16 +54,22 @@ driver.quit()
 
 donerkebab always uses css selectors for locating elements. Some examples:
 
-`input` element with type input
-`div > input` element that is the direct child of input
-`input.search` element with a class of 'search'
-`input#main_button` element with an id of 'main_button'
-`a[href='https://google.com']` link element with a href attribute
+- `input` element with type input
+- `div > input` element that is the direct child of input
+- `input.search` element with a class of 'search'
+- `input#main_button` element with an id of 'main_button'
+- `a[href='https://google.com']` link element with a href attribute
 
 Definately check out more [advanced css selectors](https://saucelabs.com/resources/articles/selenium-tips-css-selectors). They come in really handy
 
 ### Locator methods
-``
+
+```py
+driver.get_element(css_selector)
+driver.get_elements(css_selector)
+driver.get_element_in_parent(parent_element, css_selector)
+driver.get_elements_in_parent(parent_element, css_selector)
+```
 
 ## API
 
