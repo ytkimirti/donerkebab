@@ -1,2 +1,2 @@
-from .init_driver import FirefoxDriver, ChromeDriver, EdgeDriver, OperaDriver, SafariDriver
+from .init_driver import NewFirefoxDriver, NewChromeDriver, NewEdgeDriver, NewOperaDriver, NewSafariDriver
 from .keys import Keys

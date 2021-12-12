@@ -16,7 +16,7 @@ with io.open("README.md", encoding="utf-8") as infile:
 setup(
     name="donerkebab",
     packages=find_packages(exclude=("tests", "examples")),
-    version="0.0.2",
+    version="0.0.1",
     license="MIT",
     classifiers=[
         "Programming Language :: Python",
