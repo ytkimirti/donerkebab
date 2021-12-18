@@ -1,7 +1,11 @@
+# Also available for Firefox, Edge, Safari and Opera
 from donerkebab import ChromeDriver
+from donerkebab._spinner import Spinner
+import time
 
 # Get an instance of the browser window
-driver = ChromeDriver()
+# You can easily start it in headless mode too
+driver = ChromeDriver(headless=True)
 
 driver.open('https://duckduckgo.com/')
 
@@ -13,6 +17,9 @@ input_box = driver.get_element('input#search_form_input_homepage')
 
 # Uses classic selenium element functions
 input_box.send_keys('Do pigs fly?')
+
+with Spinner(True, 'Pressing button'):
+    time.sleep(40)
 
 driver.sleep(2)
 
