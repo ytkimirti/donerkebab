@@ -1,7 +1,11 @@
 <h1 align='center'>🥙 donerkebab 🥙</h1>
-> A super easy to use, beginner friendly [selenium](https://pypi.org/project/selenium/) wrapper
 
+> Control browsers without the pain with python.
 
+> A super easy to use and tasty [selenium](https://pypi.org/project/selenium/) wrapper
+
+![](https://img.shields.io/pypi/pyversions/donerkebab)
+![](https://img.shields.io/pypi/v/donerkebab)
 ```shell
 $ pip install donerkebab
 ```
@@ -14,9 +18,16 @@ $ pip install donerkebab
 [Firefox](https://github.com/mozilla/geckodriver/releases)
 [Safari](https://webkit.org/blog/6900/webdriver-support-in-safari-10/)
 
-### 2. Place it in a PATH directory
-This might be /usr/bin or the directory as your python script
+### 2. Place it in the PATH directory
+You can place it in places like /usr/bin that's in your path
 
+Or just put it in the same directory as your script
+
+## Example
+
+The following script to prints the search results of a duckduckgo search
+
+![Running in the temrinal](https://github.com/ytkimirti/donerkebab/blob/main/img/run.gif?raw=true)
 ```py
 # Also available for Firefox, Edge, Safari and Opera
 from donerkebab import ChromeDriver
@@ -111,8 +122,77 @@ driver.scroll_to_element(element)
 driver.get_alert()
 ```
 
+### Filling forms
+
+```py
+from donerkebab import Keys
+
+# Get elements as usual
+inp = driver.get_element('input')
+
+inp.send_keys('President of US?' + Keys.ENTER)
+
+# Dropdown select elements
+
+# Select an <option> based upon the <select> element's internal index
+driver.set_select(element).select_by_index(1)
+
+# Select an <option> based upon its value attribute ex: <option value='value1'>Moderate</option>
+driver.set_select(element).select_by_value('value1')
+
+# Select an <option> based upon its text <option>Bread</option>
+driver.set_select(element).select_by_visible_text('Bread')
+
+```
+
 ### Driver methods
 
-#### open(url)
+```py
 
-Opens the url and waits until the page loads. Url must start with https:// or http://
+driver.open(url) # Opens the url, waits for the page to load
+
+# Browser back forward refresh buttons
+driver.forward()
+driver.back()
+driver.refresh()
+
+# All measures in pixels
+driver.set_window_size(width, height)
+driver.set_window_position(xpos, ypos)
+```
+
+#### Actions
+You can use actions for hovering over buttons or sending out special keys
+
+Look at the [official documentations](https://www.selenium.dev/documentation/webdriver/actions_api/) for more detail
+
+```py
+# Import special keys
+from donerkebab import Keys
+
+# Perform action ctrl + A (modifier CONTROL + Alphabet A) to select the page
+driver.action.key_down(Keys.CONTROL).send_keys("a").perform()
+
+menu = driver.get_element('a[href="/downloads/"]')
+
+driver.action.move_to_element(menu).perform()
+
+submenu = driver.get_element('a[href="/downloads/source/"]')
+
+driver.action.move_to_element(submenu).click().perform()
+```
+
+#### Execute javascript in browser
+If you feel stuck, you can also execute javascript to click buttons, submit forms etc.
+
+```py
+driver.execute(javascript_code, argument1, argument2, argument3...)
+
+driver.execute("console.log('Hello World!')") # This logs Hello World! to the browser's console
+
+# You can access the arguments with the 'argument' variable
+driver.execute("console.log(argument[0] + argument[1])", "Hello ", "World")
+
+# Or get the return value as string
+print(driver.execute('2 + 3')) # 5???
+```
