@@ -38,6 +38,15 @@ class Driver:
         """
         return webdriver.ActionChains(self.d)
 
+    def expand_shadow_element(self,element):
+        """Expands #shadow_root
+
+        https://stackoverflow.com/questions/37384458/how-to-handle-elements-inside-shadow-dom-from-selenium
+        """
+        # TODO: Add this function to docs
+        shadow_root = self.d.execute_script('return arguments[0].shadowRoot', element)
+        return shadow_root
+
     def execute(self, javascipt_code, *arguments):
         """Executes javascript inside browser
 
