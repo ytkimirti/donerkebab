@@ -1,8 +1,6 @@
 <h1 align='center'>🥙 donerkebab 🥙</h1>
 
-> Control browsers without the pain with python.
-
-> A super easy to use and tasty [selenium](https://pypi.org/project/selenium/) wrapper
+> Beginner friendly wrapper functions for [selenium](https://pypi.org/project/selenium/)
 
 ![](https://img.shields.io/pypi/pyversions/donerkebab)
 ![](https://img.shields.io/pypi/v/donerkebab)
@@ -11,21 +9,17 @@ $ pip install donerkebab
 ```
 
 ## Usage
+Download the driver for your browser 
+([Chrome](https://chromedriver.chromium.org/downloads),
+[Edge](https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/),
+[Firefox](https://github.com/mozilla/geckodriver/releases) or
+[Safari](https://webkit.org/blog/6900/webdriver-support-in-safari-10/))
 
-### 1. Download the driver for your browser
-[Chrome](https://chromedriver.chromium.org/downloads)
-[Edge](https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/)
-[Firefox](https://github.com/mozilla/geckodriver/releases)
-[Safari](https://webkit.org/blog/6900/webdriver-support-in-safari-10/)
-
-### 2. Place it in the PATH directory
-You can place it in places like /usr/bin that's in your path
-
-Or just put it in the same directory as your script
+Place in the same directory as the script or in your `PATH`
 
 ## Example
 
-The following script to prints the search results of a duckduckgo search
+The following script opens a new browser, opens duckduckgo, fills search bar and gets the search results
 
 ![Running in the temrinal](https://github.com/ytkimirti/donerkebab/blob/main/img/run.gif?raw=true)
 ```py
